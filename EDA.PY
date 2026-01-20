@@ -103,7 +103,7 @@ df_outliers = df_clean.loc[outlier_mask].copy()
 
 print("Outliers:", outlier_mask.sum())
 print("Bounds:", lower_bound, upper_bound)
-df_outliers
+df_outliers.head()
 
 # 2 - cost Validation
 pd.to_numeric(df_clean['cost'], errors='coerce')
@@ -123,4 +123,22 @@ df_clean['is_return'].isin([0, 1]).all()
 df_clean['is_return'].value_counts()
 
 
+# Step 7
+# Approach: Segment-wise median imputation
+#   Used the median order amount per customer segment to fill missing values:
+df_clean['order_amount_old'] = df_clean.groupby('customer_segment')['order_amount_old'].transform(
+    lambda x: x.fillna(x.median())
+)
 
+
+
+# Step 8
+df_clean['profit'] = df_clean['order_amount_old'] - df_clean['cost']
+
+df_clean['margin'] = np.where(
+    df_clean['order_amount_old'] > 0,
+    (df_clean['profit'] / df_clean['order_amount_old']) * 100,
+    0
+)
+
+df_clean
