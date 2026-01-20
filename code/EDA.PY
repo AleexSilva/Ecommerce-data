@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-df = pd.read_csv('data/C01_l01_ecommerce_retail_data.csv')
+df = pd.read_csv('data/inpout/C01_l01_ecommerce_retail_data.csv')
 
 
 ## EDA
