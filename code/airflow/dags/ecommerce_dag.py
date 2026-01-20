@@ -49,8 +49,8 @@ dag = DAG(
 )
 
 # Global variables for file paths
-INPUT_FILE = '/opt/airflow/data/raw/C01_l01_ecommerce_retail_data.csv'
-OUTPUT_FILE = '/opt/airflow/data/cleaned/ecommerce_data_cleaned.csv'
+INPUT_FILE = '../../../data/input/C01_l01_ecommerce_retail_data.csv'
+OUTPUT_FILE = '../../../data/output/ecommerce_data_cleaned.csv'
 TEMP_FILE = '/tmp/ecommerce_temp.csv'
 
 
